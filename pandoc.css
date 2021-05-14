@@ -1,0 +1,37 @@
+body
+{
+  background: #fefefe;
+  color: #444;
+}
+
+a, a:visited, a:hover
+{
+  color: rgb(255, 0, 119);
+}
+
+html
+{
+  border-top: 4px solid #666;
+}
+
+body
+{
+  margin: 0;
+}
+
+body > *:first-child
+{
+  margin-top: 0;
+}
+
+.dates
+{
+  display: inline-block;
+  background: #eee;
+  padding: 1rem;
+}
+
+.dates > *
+{
+  margin: 0;
+}
