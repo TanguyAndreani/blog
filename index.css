@@ -1,0 +1,23 @@
+ul {
+    list-style-type: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    line-height: 1.1rem;
+
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+}
+
+li a, li a:visited, li a:hover {
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-weight: 700;
+    color: #333;
+}

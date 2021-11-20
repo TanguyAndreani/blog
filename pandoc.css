@@ -1,37 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
 body
 {
-  background: #fefefe;
-  color: #444;
+  background: #F3F4ED;
+  color: #333;
 }
 
 a, a:visited, a:hover
 {
-  color: rgb(255, 0, 119);
+  color: #1a7c86;
 }
 
 html
 {
-  border-top: 4px solid #666;
+  border-top: 4px solid #444;
 }
 
 body
 {
-  margin: 0;
+  max-width: 880px;
+  margin: 0 auto;
 }
 
-body > *:first-child
-{
-  margin-top: 0;
+.abstract::before {
+  display: inline;
+  content: "ABSTRACT";
+  font-weight: 700;
 }
 
-.dates
+.abstract
 {
-  display: inline-block;
-  background: #eee;
+  display: block;
+  border: 1px solid #bbb;
+  background: #fff;
   padding: 1rem;
 }
 
-.dates > *
+.abstract > *
 {
   margin: 0;
+  display: inline;
+}
+
+/* hide pandoc date */
+p.date {
+  display: none;
+}
+
+#title-block-header > h1 {
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #bbb;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+}
+
+pre {
+  background-color: #f8f8f6;
+  border: 1px dotted #444;
+}
+
+blockquote {
+  background-color: #eceee8;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.top-links {
+  font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+  color: #aaa;
+  font-weight: bolder;
+}
+
+.top-links a, .top-links a:visited, .top-links a:hover {
+  text-decoration: none;
+  color: #333;
+  font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+}
+
+.top-links a:not(:last-child) {
+  margin-right: 0px;
+}
+
+nav {
+  max-width: fit-content;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+footer {
+  margin-top: 1rem;
+  padding-top: 0;
+  border-top: 1px dotted #999;
+}
+
+footer > *:first-child {
+  margin-top: 0.5rem;
 }
