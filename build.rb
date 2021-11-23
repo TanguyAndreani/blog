@@ -37,6 +37,8 @@ YAML_FRONT_MATTER_REGEXP = %r!\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)!m.freeze
 
 filenames = Dir["*.markdown"]
 
+$build_drafts = ARGV.include? "--enable-drafts"
+
 index = []
 
 def get_front_matter filename
@@ -97,12 +99,13 @@ filenames.each { |filename|
 
   data, content = get_front_matter filename
   
-  if data['draft']
+  if data['draft'] && !$build_drafts
     next
   end
 
   index << {
     filename: filename,
+    draft: data['draft'],
     date: data['date'],
     title: data['title'],
     permalink: data['permalink']
@@ -124,7 +127,12 @@ permalink: index.html
   """
 
   index.each { |page|
-    line.puts "- #{page[:date].to_s.gsub(/-/, '/')}: [#{page[:title]}](#{page[:permalink]})\n"
+    b, e = '', ''
+    if page[:draft]
+      b = '<span class="draft-link">'
+      e = '</span>'
+    end
+    line.puts "- #{page[:date].to_s.gsub(/-/, '/')}: #{b}[#{page[:title]}](#{page[:permalink]})#{e}\n"
   }
 end
 
