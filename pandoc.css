@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Source+Code+Pro:wght@300;400;500;600&display=swap');
 
 *, *::after, *::before {
   box-sizing: border-box;
@@ -34,6 +34,7 @@ body
 
 .abstract
 {
+  text-align: justify;
   display: block;
   border: 1px solid #bbb;
   background: #fff;
@@ -49,6 +50,17 @@ body
 /* hide pandoc date */
 p.date {
   display: none;
+}
+
+h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+}
+
+h4, h5, h6 {
+  text-decoration: underline;
 }
 
 #title-block-header > h1 {
@@ -107,4 +119,9 @@ footer {
 
 footer > *:first-child {
   margin-top: 0.5rem;
+}
+
+code {
+  color: #777;
+  font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
 }
