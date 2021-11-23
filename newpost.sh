@@ -2,7 +2,7 @@
 set -e
 today=$(date +'%Y-%m-%d')
 title="${1}"
-title_min=$(ruby -e "print '${1}'.strip.gsub(/\s/, '-').gsub(/[^a-zA-Z0-9\-]/, '')")
+title_min=$(ruby -e "print \"${1}\".strip.gsub(/\s/, '-').gsub(/[^a-zA-Z0-9\-]/, '')")
 cat > "${today}-${title_min}.markdown" <<EOFF
 ---
 title: My title!
@@ -12,7 +12,7 @@ date: ${today}
 permalink: ${today}-${title_min}.html
 ---
 
-<div class="dates">
+<div class="abstract">
 First lines
 </div>
 
