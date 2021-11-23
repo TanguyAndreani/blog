@@ -5,9 +5,9 @@ title="${1}"
 title_min=$(ruby -e "print \"${1}\".strip.gsub(/\s/, '-').gsub(/[^a-zA-Z0-9\-]/, '')")
 cat > "${today}-${title_min}.markdown" <<EOFF
 ---
-title: My title!
-mathjax: false
-draft: true
+title: ${1}
+mathjax: true
+draft: false
 date: ${today}
 permalink: ${today}-${title_min}.html
 ---
