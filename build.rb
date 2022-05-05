@@ -27,7 +27,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 =end
 
-$blog_title = 'Posts'
+$blog_title = 'Tanguy Andreani'
+$post_list = 'Posts'
 $default_post_title = 'please give me a title'
 
 require 'psych'
@@ -121,7 +122,7 @@ index.sort_by! { |page|
 
 File.open("./index.markdown","w") do |line|
   line.puts """---
-title: #{$blog_title}
+title: #{$post_list}
 permalink: index.html
 ---
   """
