@@ -59,16 +59,27 @@ html
 p.date {
   position: absolute;
   right: 0;
-  top: 0;
+  top: -8px;
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  padding: 4px;
   color: #888;
+  border: 1px solid #bbb;
+  border-bottom: none;
+  border-radius: 5px 0 0 0;
+  background-color: #FEFBE7;
   /*display: none;*/
 }
 
+h1 {
+  text-transform: uppercase;
+}
+
 h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
   padding: 0;
   margin: 0;
+  font-size: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   font-family: 'Roboto Slab', serif;
@@ -78,13 +89,9 @@ p {
   _margin: 0.5rem 0;
 }
 
-h4, h5, h6 {
-  text-decoration: underline;
-}
-
-#title-block-header > h1 {
+h1 {
   text-align: left;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-bottom: 1px solid #bbb;
   padding: 0;
   margin: 0;
