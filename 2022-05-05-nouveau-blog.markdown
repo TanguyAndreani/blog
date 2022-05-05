@@ -1,9 +1,9 @@
 ---
-title: My very first post!
+title: Nouveau blog!
 mathjax: true
 draft: false
-date: 2021-11-23
-permalink: 2021-11-23-My-very-first-post.html
+date: 2022-05-05
+permalink: 2022-05-05-nouveau-blog.html
 ---
 
 <div class="abstract">

@@ -27,7 +27,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 =end
 
-$blog_title = 'my blog'
+$blog_title = 'Posts'
 $default_post_title = 'please give me a title'
 
 require 'psych'

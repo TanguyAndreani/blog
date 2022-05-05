@@ -2,7 +2,7 @@
 set -e
 today=$(date +'%Y-%m-%d')
 title="${1}"
-title_min=$(ruby -e "print \"${1}\".strip.gsub(/\s/, '-').gsub(/[^a-zA-Z0-9\-]/, '')")
+title_min=$(ruby -e "print \"${1}\".strip.gsub(/\s/, '-').gsub(/[^a-zA-Z0-9\-]/, '').downcase")
 cat > "${today}-${title_min}.markdown" <<EOFF
 ---
 title: ${1}
