@@ -11,7 +11,7 @@ Juste une petite annonce.
 </div>
 
 Ce nouveau blog, en français cette fois, à vocation à stocker du
-contenu un peu "prosaïque" que mes notes.
+contenu un peu plus "prosaïque" que mes notes.
 
 <div class="sidenote">
 <a href="./assets/Screenshot%202022-05-06%20at%2011-56-34%20Th%C3%A9orie%20des%20ensembles%20-%20set_theory.pdf.png">
