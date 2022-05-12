@@ -11,7 +11,7 @@ body
   color: #333;
   font-family: 'Roboto Slab', serif;
   max-width: 880px;
-  text-align: justify;
+  _text-align: justify;
   margin: 0 auto;
   margin-bottom: 100px;
 }
@@ -32,7 +32,7 @@ html
 
 .abstract::before {
   display: inline;
-  content: "RÉSUMÉ";
+  content: "RÉSUMÉ.";
   font-weight: 700;
 }
 
@@ -72,6 +72,7 @@ p.date {
 
 h1 {
   text-transform: uppercase;
+  clear: both;
 }
 
 h2, h3, h4, h5, h6 {
@@ -143,7 +144,7 @@ blockquote {
   margin-right: 0px;
 }
 
-nav {
+nav#page-nav {
   max-width: fit-content;
   margin: 0 auto;
   font-size: 1.2rem;
@@ -152,14 +153,21 @@ nav {
   text-transform: uppercase;
 }
 
-nav > p {
+nav#page-nav > p {
   font-family: 'Courier Prime', 'Courier New', Courier, monospace;
   text-align: center;
   font-weight: bolder;
 }
 
-nav > img {
+nav#page-nav > img {
   height: 200px;
+}
+
+img:not(.sidenote img) {
+  max-width: 82%;
+  border: 1px solid #444;
+  _margin: 0 auto;
+  display: block;
 }
 
 footer {
@@ -175,4 +183,37 @@ footer > *:first-child {
 code {
   color: #777;
   font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
+}
+
+.sidenote {
+  float: right;
+  max-width: 40%;
+  font-size: 0.8rem;
+  text-align: left;
+  background-color: #e3dfc0;
+  padding: 0;
+  margin: 1rem;
+  margin-top: 0;
+  margin-right: 0;
+  border: 1px solid #dad29c;
+}
+
+.sidenote p {
+  padding: 0rem;
+  margin: 0;
+}
+
+.sidenote .caption {
+  margin: 0;
+  padding: 0.2rem 0.4rem;
+  padding-top: 0;
+  display: block;
+}
+
+footer {
+  clear: both;
+}
+
+section.footnotes hr {
+  display: none;
 }
