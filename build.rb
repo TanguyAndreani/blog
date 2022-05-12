@@ -113,6 +113,7 @@ filenames.each { |filename|
   }
   
   command = pandoc_command_for filename, data, content
+  puts command
   print `#{command} 2>&1`
 }
 
@@ -138,4 +139,8 @@ permalink: index.html
 end
 
 data, content = get_front_matter './index.markdown'
-print `#{pandoc_command_for './index.markdown', data, content} 2>&1`
+command = pandoc_command_for './index.markdown', data, content
+puts command
+print `#{command} 2>&1`
+
+exit 0
