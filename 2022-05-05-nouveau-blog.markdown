@@ -10,7 +10,7 @@ permalink: 2022-05-05-nouveau-blog.html
 Juste une petite annonce.
 </div>
 
-Ce nouveau blog, en français cette fois, à vocation à stocker du
+Ce nouveau blog, en français cette fois, a vocation à stocker du
 contenu un peu plus "prosaïque" que mes notes.
 
 <div class="sidenote">
