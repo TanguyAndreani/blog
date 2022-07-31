@@ -1,5 +1,5 @@
 ---
-title: Posts
+title: Contenu
 permalink: index.html
 ---
   
