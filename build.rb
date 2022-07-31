@@ -28,7 +28,7 @@ SOFTWARE.
 =end
 
 $blog_title = 'Tanguy Andreani'
-$post_list = 'Posts'
+$post_list = 'Contenu'
 $default_post_title = 'please give me a title'
 
 require 'psych'
@@ -83,7 +83,7 @@ def pandoc_command_for filename, front_matter, content
   options << '-B header.html'
 
   if filename != './index.markdown'
-    #options << '--toc'
+    options << '--toc'
   else
     options << '-c index.css'
   end
