@@ -10,7 +10,7 @@ deploy:
 	make clean
 	git merge master
 	./build.rb
-	git add *.css *.html assets
+	git add *.css *.html assets index.markdown
 	git commit -m "build"
 	git push
 	make clean
