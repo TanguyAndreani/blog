@@ -7,9 +7,11 @@ clean:
 .PHONY: deploy
 deploy:
 	git checkout gh-pages
+	make clean
 	git merge master
 	./build.rb
 	git add *.css *.html assets
 	git commit -m "build"
 	git push
+	make clean
 	git checkout master
