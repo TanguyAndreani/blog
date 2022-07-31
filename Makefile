@@ -6,6 +6,7 @@ clean:
 
 .PHONY: deploy
 deploy:
+	make clean
 	git checkout gh-pages
 	make clean
 	git merge master

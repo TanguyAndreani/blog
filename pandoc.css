@@ -113,6 +113,7 @@ blockquote {
   font-family: 'EB Garamond', serif;
   _font-size: 1rem;
   font-weight: 600;
+  font-style: italic;
 }
 
 blockquote p:first-child {
@@ -191,7 +192,7 @@ nav#page-nav p {
   font-family: 'EB Garamond', serif;
   text-align: center;
   font-weight: bolder;
-  vertical-align: middle;
+  font-style: italic;
 }
 
 nav#page-nav > img {
