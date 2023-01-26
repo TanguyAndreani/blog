@@ -6,11 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="dcterms.date" content="2022-05-05" />
   <title>Nouveau blog! - Tanguy Andreani</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
   </style>
   <link rel="stylesheet" href="typesafe.css" />
   <link rel="stylesheet" href="pandoc.css" />
@@ -18,13 +25,16 @@
   <script id="MathJax-script" async
           src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <div class="home-link">
     <a href="/blog">← index</a>
 </div>
 
-<nav id="page-nav">
+<!-- <nav id="page-nav">
     <div class="top-text">
         <p>
             Finalement, il est probable que [...] la cohérence des mathématiques repose sur
@@ -46,7 +56,7 @@
         </a>
     </div>
 </nav>
-
+ -->
 
 <!--<h3>Table of contents</h3>-->
 <header id="title-block-header">
@@ -56,18 +66,25 @@
 <div class="abstract">
 <p>Juste une petite annonce.</p>
 </div>
-<p>Ce nouveau blog, en français cette fois, a vocation à stocker du contenu un peu plus “prosaïque” que mes notes.</p>
+<p>Ce nouveau blog, en français cette fois, a vocation à stocker du
+contenu un peu plus “prosaïque” que mes notes.</p>
 <div class="sidenote">
-<p><a href="./assets/Screenshot%202022-05-06%20at%2011-56-34%20Th%C3%A9orie%20des%20ensembles%20-%20set_theory.pdf.png"> <img src="./assets/Screenshot%202022-05-06%20at%2011-56-34%20Th%C3%A9orie%20des%20ensembles%20-%20set_theory.pdf.png"> </a> <span class="caption">Page de notes en cours de rédaction sur la théorie des ensembles.</span></p>
+<p><a href="./assets/Screenshot%202022-05-06%20at%2011-56-34%20Th%C3%A9orie%20des%20ensembles%20-%20set_theory.pdf.png">
+<img src="./assets/Screenshot%202022-05-06%20at%2011-56-34%20Th%C3%A9orie%20des%20ensembles%20-%20set_theory.pdf.png">
+</a> <span class="caption">Page de notes en cours de rédaction sur la
+théorie des ensembles.</span></p>
 </div>
-<p>Je suis étudiant en info en fin de cursus, donc si vous avez des questions sur ça n’hésitez pas.</p>
-<p>En ce moment mes préoccupations se concentrent autour de plus ou moins trois domaines:</p>
+<p>Je suis étudiant en info en fin de cursus, donc si vous avez des
+questions sur ça n’hésitez pas.</p>
+<p>En ce moment mes préoccupations se concentrent autour de plus ou
+moins trois domaines:</p>
 <ul>
 <li>Les maths fondamentales (en autodidacte),</li>
 <li>les systèmes distribués,</li>
 <li>le développement fullstack et ce qui gravite autour (DevOps, …)</li>
 </ul>
-<p>Ce blog va me servir a présenter de manière un peu plus propres certaines de mes avancées perso.</p>
+<p>Ce blog va me servir a présenter de manière un peu plus propres
+certaines de mes avancées perso.</p>
 <!--
 
 When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
