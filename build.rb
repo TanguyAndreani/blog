@@ -1,102 +1,121 @@
 #!/usr/bin/env ruby
 
-=begin
-(The code in this file which handles YAML front matters belongs to the Jekyll
-static site generator.)
-
-The MIT License (MIT)
-
-Copyright (c) 2008-present Tom Preston-Werner and Jekyll contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-=end
-
 $blog_title = 'Tanguy Andreani'
 $post_list = 'Contenu'
 $default_post_title = 'please give me a title'
+$output_dir = './docs'
+
+require 'fileutils'
+FileUtils.mkdir_p $output_dir
 
 require 'psych'
 require 'date'
 
-YAML_FRONT_MATTER_REGEXP = %r!\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)!m.freeze
+require 'kramdown'
+
+require './from_jekyll_project'
 
 filenames = Dir["*.markdown"]
 
 $build_drafts = ARGV.include? "--enable-drafts"
 
+$html_doctype = '''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+'''
+
+$html_mathjax = '''
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+'''
+
+$html_open_body = '''
+</head><body>
+'''
+
+$html_link_to_index = '''
+<div class="home-link">
+  <a href="/">← index</a>
+</div>
+'''
+
+$html_footer = '''
+<footer>
+    <p><i>Inspiré du blog de <a href="https://fabiensanglard.net/">Fabien Sanglard</a>.</i></p>
+</footer>
+'''
+
+$html_close_tags = '''
+</body></html>
+'''
+
 index = []
 
-def get_front_matter filename
-  content = ''
-  data = {}
-  
-  begin
-    content = File.read(filename)
-    if content =~ YAML_FRONT_MATTER_REGEXP
-      #content = Regexp.last_match.post_match
-      data = Psych.safe_load(Regexp.last_match(1), permitted_classes: [Date])
-    end
-  rescue Psych::SyntaxError => e
-    $stderr.puts "YAML Exception reading #{filename}: #{e.message}"
-    raise e
-  rescue StandardError => e
-    $stderr.puts "Error reading file #{filename}: #{e.message}"
-    raise e
-  end
-
-  [data, ''] # empty string used to be `content`
+def link_href css_file
+  "<link rel=\"stylesheet\" href=\"#{css_file}\" />"
 end
 
-def pandoc_command_for filename, front_matter, content
-  data = front_matter
+def write_html filename, front_matter, markdown
+  front_matter['permalink'] ||= filename.gsub(/\.markdown$/, '.html')
+  front_matter['title'] ||= $default_post_title
 
-  data['permalink'] ||= filename.gsub(/\.markdown$/, '.html')
-  data['title'] ||= $default_post_title
-
-  options = []
-  options << 'pandoc'
-  options << '-s'
+  html = html_from_markdown_file filename, front_matter, markdown
   
-  if data['mathjax']
-    options << '--mathjax'
-    options << '-H mathjax.html'
+  File.open($output_dir + '/' + front_matter['permalink'], 'w') { |l|
+    l.write(html)
+  }
+end
+
+def html_from_markdown_file filename, front_matter, markdown
+  content = $html_doctype.dup
+  
+  if front_matter['mathjax']
+    content << $html_mathjax
   end
 
-  options << '-c typesafe.css -c pandoc.css -A footer.html'
+  content << link_href('typesafe.css')
+  content << link_href('pandoc.css')
   
-  options << '-B header.html'
+  content << "<title>#{front_matter['title']} - #{$blog_title}</title>"
+  
+  if filename != './index.markdown'
+  else
+    content << link_href('./index.css')
+  end
+
+  content << $html_open_body
 
   if filename != './index.markdown'
-    options << '--toc'
-  else
-    options << '-c index.css'
+    content << $html_link_to_index
+
+    # title and date
+    content << """
+      <header id=\"title-block-header\">
+        <h1 class=\"title\">#{front_matter['title']}</h1>
+        <p class=\"date\">#{front_matter['date']}</p>
+      </header>
+    """
   end
-  
-  options << "--metadata pagetitle=\"#{data['title']} - #{$blog_title}\""
-  
-  options << "\"#{filename}\" -o \"#{data['permalink']}\""
-  
-  options.join(' ')
+
+  content << Kramdown::Document.new(markdown).to_html
+
+  content << $html_footer
+  content << $html_close_tags
+
+  content
 end
+
+# Generate every pages
 
 filenames.each { |filename|
   next if filename == 'index.markdown'
+
+  puts "Processing #{filename}"
 
   data, content = get_front_matter filename
   
@@ -112,10 +131,10 @@ filenames.each { |filename|
     permalink: data['permalink']
   }
   
-  command = pandoc_command_for filename, data, content
-  puts command
-  print `#{command} 2>&1`
+  write_html filename, data, content
 }
+
+# Generate index.markdown
 
 index.sort_by! { |page|
   page[:date]
@@ -124,7 +143,7 @@ index.sort_by! { |page|
 File.open("./index.markdown","w") do |line|
   line.puts """---
 title: #{$post_list}
-permalink: index.html
+permalink: ./index.html
 ---
   """
 
@@ -138,9 +157,10 @@ permalink: index.html
   }
 end
 
-data, content = get_front_matter './index.markdown'
-command = pandoc_command_for './index.markdown', data, content
-puts command
-print `#{command} 2>&1`
+# Generate index.html
+
+puts "Processing index.markdown"
+index_front_matter, index_content = get_front_matter './index.markdown'
+write_html './index.markdown', index_front_matter, index_content
 
 exit 0
