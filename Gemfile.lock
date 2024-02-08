@@ -4,12 +4,14 @@ GEM
     kramdown (2.4.0)
       rexml
     rexml (3.2.6)
+    rouge (4.2.0)
 
 PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
   kramdown (~> 2.4)
+  rouge (~> 4.2)
 
 BUNDLED WITH
    2.2.3

@@ -12,6 +12,7 @@ require 'psych'
 require 'date'
 
 require 'kramdown'
+require 'rouge'
 
 require './from_jekyll_project'
 
@@ -27,11 +28,15 @@ $html_doctype = '''
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 '''
 
-$html_mathjax = '''
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
+$html_katex = '''
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
 '''
 
 $html_open_body = '''
@@ -73,19 +78,20 @@ end
 
 def html_from_markdown_file filename, front_matter, markdown
   content = $html_doctype.dup
-  
-  if front_matter['mathjax']
-    content << $html_mathjax
-  end
 
   content << link_href('typesafe.css')
   content << link_href('pandoc.css')
+  content << link_href('algol.css')
   
   content << "<title>#{front_matter['title']} - #{$blog_title}</title>"
   
   if filename != './index.markdown'
   else
     content << link_href('./index.css')
+  end
+
+  if front_matter['mathjax']
+    content << $html_katex
   end
 
   content << $html_open_body
@@ -102,7 +108,8 @@ def html_from_markdown_file filename, front_matter, markdown
     """
   end
 
-  content << Kramdown::Document.new(markdown).to_html
+  content << Kramdown::Document.new(markdown, syntax_highlighter: :rouge).to_html 
+  
 
   content << $html_footer
   content << $html_close_tags
