@@ -51,7 +51,13 @@ $html_link_to_index = '''
 
 $html_footer = '''
 <footer>
-    <p><i>Inspiré du blog de <a href="https://fabiensanglard.net/">Fabien Sanglard</a>.</i></p>
+    <p><i>
+      Inspiré des blogs de <a href="https://fabiensanglard.net/">Fabien Sanglard</a>
+      et <a href="https://jvns.ca/">Julia Evans</a>.</i>
+'''
+
+$html_footer_close = '''
+  </p>
 </footer>
 '''
 
@@ -112,6 +118,15 @@ def html_from_markdown_file filename, front_matter, markdown
   
 
   content << $html_footer
+
+  if filename != './index.markdown'
+    content << """
+    <a style=\"float:right\" href=\"https://github.com/TanguyAndreani/blog/blob/master/#{filename}\">Source code and history</a>
+    """
+  end
+
+  content << $html_footer_close
+
   content << $html_close_tags
 
   content
@@ -135,7 +150,8 @@ filenames.each { |filename|
     draft: data['draft'],
     date: data['date'],
     title: data['title'],
-    permalink: data['permalink']
+    permalink: data['permalink'],
+    category: data['category']
   }
   
   write_html filename, data, content
@@ -147,20 +163,45 @@ index.sort_by! { |page|
   page[:date]
 }.reverse!
 
-File.open("./index.markdown","w") do |line|
-  line.puts """---
+def list_item fd, page
+  b, e = '', ''
+  if page[:draft]
+    b = '<span class="draft-link">'
+    e = '</span>'
+  end
+  fd.puts "- #{page[:date].to_s.gsub(/-/, '/')}: #{b}[#{page[:title]}](#{page[:permalink]})#{e}\n"
+end
+
+File.open("./index.markdown","w") do |fd|
+  fd.puts """---
 title: #{$post_list}
 permalink: ./index.html
 ---
+# #{$blog_title}
+
   """
 
+  per_categories = {}
+
   index.each { |page|
-    b, e = '', ''
-    if page[:draft]
-      b = '<span class="draft-link">'
-      e = '</span>'
+    if page[:category]
+      per_categories[page[:category]] ||= []
+      per_categories[page[:category]] << page
     end
-    line.puts "- #{page[:date].to_s.gsub(/-/, '/')}: #{b}[#{page[:title]}](#{page[:permalink]})#{e}\n"
+  }
+
+  index.first(5).each { |page|
+    list_item fd, page
+  }
+
+  per_categories.each { |k, v|
+    fd.puts ""
+    fd.puts "# #{k}"
+    fd.puts ""
+
+    v.each { |page|
+      list_item fd, page
+    }
   }
 end
 
