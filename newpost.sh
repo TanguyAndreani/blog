@@ -10,13 +10,15 @@ mathjax: true
 draft: false
 date: ${today}
 permalink: ${today}-${title_min}.html
+category: hot
 ---
 
 <div class="abstract">
 First lines
 </div>
 
-When \$a \\ne 0$, there are two solutions to \$ax^2 + bx + c = 0\$ and they are
+When \$\$a \\ne 0\$\$, there are two solutions to \$\$ax^2 + bx + c = 0\$\$ and they are
+
   \$\$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}\$\$
 
 And here is [some](https://google.fr) quote:
@@ -25,7 +27,7 @@ And here is [some](https://google.fr) quote:
 
 ## Level two title
 
-\`\`\`js
+~~~ js
 console.log('hello')
-\`\`\`
+~~~
 EOFF
