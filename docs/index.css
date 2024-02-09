@@ -6,20 +6,21 @@ ul {
 }
 
 ul li {
-    line-height: 1.1rem;
+    line-height: 1.2rem;
 
     margin: 0;
     padding: 0;
 }
 
 li {
-    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    
 }
 
 li a, li a:visited, li a:hover {
-    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
-    font-weight: 700;
-    color: #333;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: #000;
+    _text-decoration: none;
 }
 
 .draft-link a, .draft-link a:visited, .draft-link a:hover {

@@ -89,7 +89,7 @@ def html_from_markdown_file filename, front_matter, markdown
   content << link_href('pandoc.css')
   content << link_href('algol.css')
   
-  content << "<title>#{front_matter['title']} - #{$blog_title}</title>"
+  content << "<title>#{front_matter['title']}</title>"
   
   if filename != './index.markdown'
   else
@@ -121,7 +121,7 @@ def html_from_markdown_file filename, front_matter, markdown
 
   if filename != './index.markdown'
     content << """
-    <a style=\"float:right\" href=\"https://github.com/TanguyAndreani/blog/blob/master/#{filename}\">Source code and history</a>
+    <a class=\"historylink\" href=\"https://github.com/TanguyAndreani/blog/blob/master/#{filename}\">Source code and history</a>
     """
   end
 
@@ -169,12 +169,12 @@ def list_item fd, page
     b = '<span class="draft-link">'
     e = '</span>'
   end
-  fd.puts "- #{page[:date].to_s.gsub(/-/, '/')}: #{b}[#{page[:title]}](#{page[:permalink]})#{e}\n"
+  fd.puts "- #{page[:date].to_s.gsub(/-/, '/')} ➡️ #{b}[#{page[:title]}](#{page[:permalink]})#{e}\n"
 end
 
 File.open("./index.markdown","w") do |fd|
   fd.puts """---
-title: #{$post_list}
+title: #{$blog_title}
 permalink: ./index.html
 ---
 # #{$blog_title}
@@ -193,6 +193,14 @@ permalink: ./index.html
   index.first(5).each { |page|
     list_item fd, page
   }
+
+  fd.puts ''
+  fd.puts '*Sometimes I write in french sometimes in english, feel free to use a browser extension to translate on-the-fly.*'
+  fd.puts 'Check out my [personal website](https://tanguyandreani.me). For any comment, [use email](mailto:hello@tanguyandreani.me)
+  or reach out publicly on any social media.'
+
+  fd.puts ''
+  fd.puts '<input type="text" placeholder="Search (doesn\'t work yet)" />'
 
   per_categories.each { |k, v|
     fd.puts ""
