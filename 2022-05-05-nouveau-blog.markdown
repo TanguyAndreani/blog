@@ -13,12 +13,15 @@ Juste une petite annonce.
 Ce nouveau blog, en français cette fois, a vocation à stocker du
 contenu un peu plus "prosaïque" que mes notes.
 
+
 <div class="sidenote">
 <a href="./assets/Screenshot%202022-05-06%20at%2011-56-34%20Th%C3%A9orie%20des%20ensembles%20-%20set_theory.pdf.png">
 <img src="./assets/Screenshot%202022-05-06%20at%2011-56-34%20Th%C3%A9orie%20des%20ensembles%20-%20set_theory.pdf.png">
 </a>
 <span class="caption">Page de notes en cours de rédaction sur la théorie des ensembles.</span>
 </div>
+
+<span class="margin-note">hello world my name is hello world my name is hello world</span>
 
 Je suis étudiant en info en fin de cursus, donc si vous avez des questions sur
 ça n'hésitez pas.

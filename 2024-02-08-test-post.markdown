@@ -4,6 +4,7 @@ mathjax: true
 draft: false
 date: 2024-02-08
 permalink: 2024-02-08-test-post.html
+category: "Catégorie test"
 ---
 
 <div class="abstract">
@@ -19,6 +20,9 @@ And here is [some](https://google.fr) quote:
 >Lorem ipsum dolor sit amet!
 
 ## Level two title
+
+hello world my name is.<sup>2</sup> <span class="margin-note"><sup>2</sup>lorem ipsum etc. etc. etc. hello world my name is hello world my name is</span>
+
 
 ~~~ js
 console.log('hello')
