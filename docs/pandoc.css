@@ -296,9 +296,24 @@ blockquote {
   float: right;
 }
 
+.home-link
+{
+  position: absolute;
+  right: 100%;
+  min-width: 100px;
+  text-align: right;
+  margin-right: 2rem;
+  font-size: 2rem;
+  padding-bottom: 1em;
+}
+
 @media screen and (max-width: 800px) {
   body {
     min-width: 97%;
+  }
+
+  .home-link {
+    display: none;
   }
 
   .historylink {
@@ -322,3 +337,4 @@ sup { vertical-align: top; font-size: 0.6em; }
 .highlight code {
   color: #444;
 }
+

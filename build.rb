@@ -45,7 +45,7 @@ $html_open_body = '''
 
 $html_link_to_index = '''
 <div class="home-link">
-  <a href="/">← index</a>
+  <a href="/">🏠</a>
 </div>
 '''
 
@@ -103,11 +103,11 @@ def html_from_markdown_file filename, front_matter, markdown
   content << $html_open_body
 
   if filename != './index.markdown'
-    content << $html_link_to_index
 
     # title and date
     content << """
       <header id=\"title-block-header\">
+        #{$html_link_to_index}
         <h1 class=\"title\">#{front_matter['title']}</h1>
         <p class=\"date\">#{front_matter['date']}</p>
       </header>
