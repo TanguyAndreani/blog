@@ -17,7 +17,7 @@
 Check out my <a href="https://tanguyandreani.me">personal website</a>. For any comment, <a href="mailto:hello@tanguyandreani.me">use email</a>
   or reach out publicly on any social media.</p>
 
-<p><input type="text" placeholder="Search (doesn't work yet)" /></p>
+<p><input type="text" placeholder="Filter" /></p>
 
 <h1 id="catgorie-test">Catégorie test</h1>
 
@@ -29,6 +29,32 @@ Check out my <a href="https://tanguyandreani.me">personal website</a>. For any c
     <p><i>
       Inspiré des blogs de <a href="https://fabiensanglard.net/">Fabien Sanglard</a>
       et <a href="https://jvns.ca/">Julia Evans</a>.</i>
+
+<script>
+const input = document.querySelector('input')
+const ps = document.querySelectorAll('li')
+const hs = document.querySelectorAll('h1')
+input.onkeyup = () => {
+
+  var i = 0;
+  ps.forEach(p => {
+    i++
+    p.hidden = i > 5 && !p.innerText.toLowerCase().includes(input.value.toLowerCase())
+  })
+
+
+  var j = 0;
+  hs.forEach(h => {
+    j++;
+    if (j == 1) return;
+    var ul = h.nextSibling;
+    while (ul.nodeName != 'UL') {
+      ul = ul.nextSibling
+    }
+    h.hidden = [].slice.call(ul.children).reduce((acc, curr) => {return (acc && curr.hidden)}, 1)
+d  })
+}
+</script>
 
   </p>
 </footer>

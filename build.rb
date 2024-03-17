@@ -61,6 +61,34 @@ $html_footer_close = '''
 </footer>
 '''
 
+$hosmas_filter = """
+<script>
+const input = document.querySelector('input')
+const ps = document.querySelectorAll('li')
+const hs = document.querySelectorAll('h1')
+input.onkeyup = () => {
+
+  var i = 0;
+  ps.forEach(p => {
+    i++
+    p.hidden = i > 5 && !p.innerText.toLowerCase().includes(input.value.toLowerCase())
+  })
+
+
+  var j = 0;
+  hs.forEach(h => {
+    j++;
+    if (j == 1) return;
+    var ul = h.nextSibling;
+    while (ul.nodeName != 'UL') {
+      ul = ul.nextSibling
+    }
+    h.hidden = [].slice.call(ul.children).reduce((acc, curr) => {return (acc && curr.hidden)}, 1)
+d  })
+}
+</script>
+"""
+
 $html_close_tags = '''
 </body></html>
 '''
@@ -123,6 +151,10 @@ def html_from_markdown_file filename, front_matter, markdown
     content << """
     <a class=\"historylink\" href=\"https://github.com/TanguyAndreani/blog/blob/master/#{filename}\">Source code and history</a>
     """
+  end
+
+  if filename == './index.markdown'
+    content << $hosmas_filter
   end
 
   content << $html_footer_close
@@ -200,7 +232,7 @@ permalink: ./index.html
   or reach out publicly on any social media.'
 
   fd.puts ''
-  fd.puts '<input type="text" placeholder="Search (doesn\'t work yet)" />'
+  fd.puts '<input type="text" placeholder="Filter" />'
 
   per_categories.each { |k, v|
     fd.puts ""
