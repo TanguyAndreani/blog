@@ -223,7 +223,7 @@ permalink: ./index.html
   }
 
   fd.puts '''
-  <img class="featured" src="assets/daylight.jpg">
+  <img class="featured" src="assets/daylight.jpg" alt="featured picture #1">
   '''
 
   index.first(5).each { |page|
