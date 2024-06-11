@@ -245,6 +245,7 @@ permalink: ./index.html
   [Soundcloud](https://soundcloud.com/lmbdfn)
   [Bandcamp](https://lmbdfn.bandcamp.com)
   [Twitch](https://twitch.tv/TanguyAndreani)
+  [Youtube](https://www.youtube.com/@lmbdfn)
   [GitHub](https://github.com/TanguyAndreani)
   '
 
