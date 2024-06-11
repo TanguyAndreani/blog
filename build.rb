@@ -222,6 +222,10 @@ permalink: ./index.html
     end
   }
 
+  fd.puts '''
+  <img class="featured" src="assets/daylight.jpg">
+  '''
+
   index.first(5).each { |page|
     list_item fd, page
   }
@@ -230,6 +234,9 @@ permalink: ./index.html
   fd.puts '*Sometimes I write in french sometimes in english, feel free to use a browser extension to translate on-the-fly.*'
   fd.puts 'Check out my [personal website](https://tanguyandreani.me). For any comment, [use email](mailto:hello@tanguyandreani.me)
   or reach out publicly on any social media.'
+
+  fd.puts ''
+  fd.puts 'Most of my content orbitates around concepts such as improvisation, story-telling and reverse-engineering.'
 
   fd.puts ''
   fd.puts '<input type="text" placeholder="Filter" />'
