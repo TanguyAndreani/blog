@@ -239,6 +239,16 @@ permalink: ./index.html
   fd.puts 'Most of my content orbitates around concepts such as improvisation, story-telling and reverse-engineering.'
 
   fd.puts ''
+  fd.puts '[Instagram](https://instagram.com/tanguyandreani)
+  [Bluesky](https://lmbdfn.bsky.social)
+  [Twitter](https://twitter.com/lmbdfn)
+  [Soundcloud](https://soundcloud.com/lmbdfn)
+  [Bandcamp](https://lmbdfn.bandcamp.com)
+  [Twitch](https://twitch.tv/TanguyAndreani)
+  [GitHub](https://github.com/TanguyAndreani)
+  '
+
+  fd.puts ''
   fd.puts '<input type="text" placeholder="Filter" />'
 
   per_categories.each { |k, v|
