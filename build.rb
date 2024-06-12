@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-$blog_title = 'Tanguy Andreani'
+$blog_title = '🏙️ Tanguy Andreani 🌆'
 $post_list = 'Contenu'
 $default_post_title = 'please give me a title'
 $output_dir = './docs'
@@ -230,16 +230,14 @@ permalink: ./index.html
     list_item fd, page
   }
 
-  fd.puts ''
-  fd.puts '*Sometimes I write in french sometimes in english, feel free to use a browser extension to translate on-the-fly.*'
-  fd.puts 'Check out my [personal website](https://tanguyandreani.me). For any comment, [use email](mailto:hello@tanguyandreani.me)
-  or reach out publicly on any social media.'
+  fd.puts '''
+  *Sometimes I write in french sometimes in english, feel free to use a browser extension to translate on-the-fly.*
+  Check out my [personal website](https://tanguyandreani.me). For any comment, [use email](mailto:hello@tanguyandreani.me)
+  or reach out publicly on any social media.
 
-  fd.puts ''
-  fd.puts 'Most of my content orbitates around concepts such as improvisation, story-telling and reverse-engineering.'
+  Most of my content orbitates around concepts such as improvisation, story-telling and reverse-engineering.
 
-  fd.puts ''
-  fd.puts '[Instagram](https://instagram.com/tanguy.andreani)
+  [Instagram](https://instagram.com/tanguy.andreani)
   [Bluesky](https://lmbdfn.bsky.social)
   [Twitter](https://twitter.com/lmbdfn)
   [Soundcloud](https://soundcloud.com/lmbdfn)
@@ -247,7 +245,7 @@ permalink: ./index.html
   [Twitch](https://twitch.tv/TanguyAndreani)
   [Youtube](https://www.youtube.com/@lmbdfn)
   [GitHub](https://github.com/TanguyAndreani)
-  '
+  '''
 
   fd.puts ''
   fd.puts '<input type="text" placeholder="Filter" />'
