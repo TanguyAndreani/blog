@@ -1,3 +1,4 @@
 #!/bin/bash
-# gem install rerun
+rvm use
+ruby --version
 rerun -p '*.markdown' -i 'index.markdown' bundle exec ./build.rb \\--enable-drafts

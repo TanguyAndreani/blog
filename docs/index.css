@@ -29,6 +29,7 @@ li a, li a:visited, li a:hover {
 
 
 .featured {
+    image-rendering: pixelated;
     width: 100%;
     max-width: 100% !important;
     height: 50px;
@@ -39,8 +40,9 @@ li a, li a:visited, li a:hover {
     .featured {
         height: initial;
         float:right;
-        width: 250px;
+        width: 150px;
         max-width: 33% !important;
         margin-left: 1rem;
+        margin-bottom: 1rem;
     }
 }
