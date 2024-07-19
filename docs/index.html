@@ -24,7 +24,7 @@
   <a href="https://github.com/TanguyAndreani">GitHub</a>
   <a href="https://fr.linkedin.com/in/tanguy-andreani-280318225">LinkedIn</a></p>
 
-<p><input type="text" placeholder="Filter" /></p>
+<p><input type="text" placeholder="Filter" name="searchField" /></p>
 
 <h1 id="catgorie-test">Catégorie test</h1>
 
@@ -60,6 +60,17 @@ input.onkeyup = () => {
     }
     h.hidden = [].slice.call(ul.children).reduce((acc, curr) => {return (acc && curr.hidden)}, 1)
   })
+}
+</script>
+
+<script>
+document.onkeydown = (event) => {
+  if (event.key === "/") {
+    event.preventDefault()
+  document.querySelector("[name='searchField']").focus();
+  }
+  if (event.key === "Escape") {
+    document.activeElement.blur() }
 }
 </script>
 

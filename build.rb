@@ -88,6 +88,7 @@ def html_from_markdown_file(filename, front_matter, markdown)
   end
 
   content << $hosmas_filter if filename == './index.markdown'
+  content << $focus_on_slash if filename == './index.markdown'
 
   content << $html_footer_close
 
@@ -177,7 +178,7 @@ permalink: ./index.html
   '
 
   fd.puts ''
-  fd.puts '<input type="text" placeholder="Filter" />'
+  fd.puts '<input type="text" placeholder="Filter" name="searchField" />'
 
   per_categories.each do |k, v|
     fd.puts ''

@@ -65,6 +65,19 @@ input.onkeyup = () => {
 </script>
 "
 
+$focus_on_slash = '
+<script>
+document.onkeydown = (event) => {
+  if (event.key === "/") {
+    event.preventDefault()
+  document.querySelector("[name=\'searchField\']").focus();
+  }
+  if (event.key === "Escape") {
+    document.activeElement.blur() }
+}
+</script>
+'
+
 $html_close_tags = '
 </body></html>
 '
