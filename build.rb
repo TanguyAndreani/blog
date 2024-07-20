@@ -7,7 +7,7 @@ if ENV['MY_JRUBY_DEBUG']
 end
 
 BLOG_CONFIG = {
-  title: 'Tanguy Andreani',
+  title: 'Blog / Tanguy Andreani',
   post_list: 'Contenu',
   default_post_title: 'please give me a title',
   output_dir: './docs',
