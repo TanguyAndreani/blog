@@ -1,7 +1,7 @@
 ---
 title: Nouveau blog!
 mathjax: true
-draft: false
+draft: true
 date: 2022-05-05
 permalink: 2022-05-05-nouveau-blog.html
 ---
